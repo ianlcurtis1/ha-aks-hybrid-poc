@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PoC.EventHubCircuitBreaker.MessageProcessor": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+﻿name: Build and push to ACR on release
+
+on:
+    release:
+       types: [created]
+
+env:
+    ACR: akshybridpocacr
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        name: build and test
+
+        steps:
+        - uses: actions/checkout@v3
+        - name: Setup dotnet
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: '7.0.x'
+
+        - name: Install dependencies
+          working-directory: ./src
+          run: dotnet restore
+
+        - name: Build
+          working-directory: ./src
+          run: dotnet build --configuration Release --no-restore
+
+        - name: Test with dotnet
+          working-directory: ./src
+          run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+
+        - name: Upload dotnet test results
+          if: ${{ always() }}
+          uses: actions/upload-artifact@v3
+          with:
+            name: dotnet-results-${{ matrix.dotnet-version }}
+            path: ./src/TestResults-${{ matrix.dotnet-version }}
+
+        - name: Build API Docker image
+          run: docker build -f "./src/poc.ha-aks-hybrid.api/Dockerfile" -t pochaakshybridapi:latest "./src"
+
+        - name: Build message processor Docker image
+          run: docker build -f "./src/poc.ha-aks-hybrid.message-processor/Dockerfile" -t pochaakshybridmessageprocessor:latest "./src"
+
+        - name: Log in with Azure
+          uses: azure/login@v1
+          with:
+              creds: '${{ secrets.AZURE_CREDENTIALS }}'
+
+        - name: Push API Docker image to ACR
+          run: |
+            az acr login --name ${{ env.ACR }}
+            docker tag pochaakshybridapi:latest ${{ env.ACR }}.azurecr.io/pochaakshybridapi:latest
+            docker push ${{ env.ACR }}.azurecr.io/pochaakshybridapi:latest
+        
+        - name: Push message processor Docker image to ACR
+          run: |
+            az acr login --name ${{ env.ACR }}
+            docker tag pochaakshybridmessageprocessor:latest ${{ env.ACR }}.azurecr.io/pochaakshybridmessageprocessor:latest
+            docker push ${{ env.ACR }}.azurecr.io/pochaakshybridmessageprocessor:latest
