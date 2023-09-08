@@ -1,6 +1,6 @@
 # Highly Available Azure Arc-enabled AKS Hybrid Messaging
 
-[![Build on pull to main](https://github.com/ianlcurtis1/p-ha-aks-hybrid-poc/actions/workflows/build.yml/badge.svg)](https://github.com/ianlcurtis1/p-ha-aks-hybrid-poc/actions/workflows/build.yml)
+[![Build on pull to main](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/actions/workflows/build.yml/badge.svg)](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/actions/workflows/build.yml)
 
 # Introduction 
 AKS Hybrid (https://learn.microsoft.com/en-us/azure/aks/hybrid/) is an on-premise implementation of Azure Kubernetes Service (AKS) orchestrator which automates running containerised applications at scale. It provides a solution for hosting highly available workloads on-premise. Azure Arc (https://learn.microsoft.com/en-us/azure/azure-arc/overview) is a cloud based control plane which can be used for managing on-premise AKS Hybrid instances.
