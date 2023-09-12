@@ -52,10 +52,10 @@ curl -X 'POST' \
 `08/09/2023 08:00:28 enqueue message senderId:01 correlationId:e46f1091-0e22-4cf7-ac29-4b0a8695bdb3 message:Hello world! successful.`
 
 3. If you have configured the message processor console app correctly, it will pick up the message from the file share and send it to the event hub. You can monitor your event hub messages by:
-a. Install extension for VSCode https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer
-b. Edit the extension settings – add Event Hub Connection String and Hub Entity Name
-c. Open the command palette, search for `Event` and select `Event hub: Start Monitoring Event Hub Message`								
-e. When finished, select `Event hub: Start Monitoring Event Hub Message`
+   - Install extension for VSCode https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer		
+   - Edit the extension settings – add Event Hub Connection String and Hub Entity Name
+   - Open the command palette, search for `Event` and select `Event hub: Start Monitoring Event Hub Message`								
+   - When finished, select `Event hub: Start Monitoring Event Hub Message`
 
 
 
