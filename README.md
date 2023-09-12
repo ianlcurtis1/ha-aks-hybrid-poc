@@ -55,7 +55,7 @@ curl -X 'POST' \
    - Install extension for VSCode https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer		
    - Edit the extension settings – add Event Hub Connection String and Hub Entity Name
    - Open the command palette, search for `Event` and select `Event hub: Start Monitoring Event Hub Message`								
-   - When finished, select `Event hub: Start Monitoring Event Hub Message`
+   - When finished, select `Event hub: Stop Monitoring Event Hub Message`
 
 
 
