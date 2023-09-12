@@ -5,7 +5,7 @@ namespace PoC.HaAKSHybrid.API
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("api starting...");
+            Console.WriteLine("poc.ha-aks-hybrid.api starting...");
 
             var builder = WebApplication.CreateBuilder(args);
 

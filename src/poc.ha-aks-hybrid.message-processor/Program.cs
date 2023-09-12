@@ -8,7 +8,7 @@ namespace PoC.HaAKSHybrid.MessageProcessor
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("starting PoC.HaAKSHybrid.MessageProcessor");
+            Console.WriteLine("poc.ha-aks-hybrid.message-processor starting...");
 
             try
             {
