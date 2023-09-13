@@ -23,6 +23,20 @@ namespace PoC.HaAKSHybrid.API
             //https://techcommunity.microsoft.com/t5/azure-arc-blog/ga-azure-key-vault-secrets-provider-extension-for-arc-enabled/ba-p/3389231
 
 
+            //no cors for dev https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-7.0&preserve-view=true
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("NoCORSPolicy", builder =>
+                {
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowedToAllowWildcardSubdomains();
+                });
+            });
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -34,6 +48,11 @@ namespace PoC.HaAKSHybrid.API
 
             //don't redirect to https in k8s
             //app.UseHttpsRedirection();
+
+
+            //no cors for dev
+            app.UseCors("NoCORSPolicy");
+
 
             app.UseAuthorization();
 

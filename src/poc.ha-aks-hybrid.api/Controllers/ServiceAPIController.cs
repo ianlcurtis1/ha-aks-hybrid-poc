@@ -34,7 +34,7 @@ namespace PoC.HaAKSHybrid.API
         /// <returns>Success or failure</returns>
         [HttpPost]
         [Route("message")]
-        public async Task<IActionResult> SendMessageToServer([FromBody] APIMessage message)
+        public async Task<IActionResult> SendMessageToServer([FromBody] APIMessageIn message)
         {
             Console.WriteLine("message received.");
 
@@ -54,7 +54,7 @@ namespace PoC.HaAKSHybrid.API
                 return BadRequest("enqueue failed, please try later.");
             }
 
-            return Ok($"{DateTime.UtcNow.ToString()} enqueue message senderId:{msg.SenderId} correlationId:{msg.CorrelationId} message:{msg.Value} {((rtn) ? "successful" : "failed")}.");
+            return Ok(new APIMessageOut(msg.SenderId, msg.CorrelationId, msg.Value, rtn));
         }
     }
 }

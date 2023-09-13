@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HA AKS Hybrid Messaging</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>HA AKS Hybrid Messaging Tester</h1>
+    Endpoint:<select id="uri-select"></select>
+    <br /><br />
+    <form action="javascript:void(0);" method="POST" onsubmit="sendMessage()">
+        Sender Id:<input type="text" id="sender-id" placeholder="01">
+        Message:<input type="text" id="sender-msg" placeholder="Hello world!">
+        <input type="submit" value="Send">
+    </form>
+    <br />
+    <textarea id="server-rsp" rows="7" cols="70" readonly></textarea>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        LoadSelect();
+    </script>
+</body>
+</html>
