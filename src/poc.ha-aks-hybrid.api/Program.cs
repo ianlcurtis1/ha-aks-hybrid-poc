@@ -24,17 +24,17 @@ namespace PoC.HaAKSHybrid.API
 
 
             //no cors for dev https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-7.0&preserve-view=true
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("NoCORSPolicy", builder =>
-                {
-                    builder
-                    .AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .SetIsOriginAllowedToAllowWildcardSubdomains();
-                });
-            });
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("NoCORSPolicy", builder =>
+            //    {
+            //        builder
+            //        .AllowAnyOrigin()
+            //        .AllowAnyHeader()
+            //        .AllowAnyMethod()
+            //        .SetIsOriginAllowedToAllowWildcardSubdomains();
+            //    });
+            //});
 
 
             var app = builder.Build();
@@ -51,7 +51,7 @@ namespace PoC.HaAKSHybrid.API
 
 
             //no cors for dev
-            app.UseCors("NoCORSPolicy");
+            //app.UseCors("NoCORSPolicy");
 
 
             app.UseAuthorization();
