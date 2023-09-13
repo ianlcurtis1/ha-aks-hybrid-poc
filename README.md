@@ -47,11 +47,17 @@ curl -X 'POST' \
 }'
 ```
 
-2. The API will enqueue the message to a file share and return a success message.
+2. Alternatively, you can deploy the static test app in the `www` directory to an Azure blob storage account and use it as a test client. To do this:
+   - Create a new Azure Storage Account and Blob Container, configure as a static website.
+   - Edit the `js/site.js` file, in the `uris` const at the top of the file replace the existing uris with the urls to your AKS and AKS Hybrid instances.
+   - Upload the contents of the `www` folder to the blob container.
+   - Configure CORS on your AKS and AKS Hybrid instance to allow access from the blob container uri.
+
+3. The API will enqueue the message to a file share and return a success message.
 
 `08/09/2023 08:00:28 enqueue message senderId:01 correlationId:e46f1091-0e22-4cf7-ac29-4b0a8695bdb3 message:Hello world! successful.`
 
-3. If you have configured the message processor console app correctly, it will pick up the message from the file share and send it to the event hub. You can monitor your event hub messages by:
+4. If you have configured the message processor console app correctly, it will pick up the message from the file share and send it to the event hub. You can monitor your event hub messages by:
    - Install extension for VSCode https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer		
    - Edit the extension settings – add Event Hub Connection String and Hub Entity Name
    - Open the command palette, search for `Event` and select `Event hub: Start Monitoring Event Hub Message`								
