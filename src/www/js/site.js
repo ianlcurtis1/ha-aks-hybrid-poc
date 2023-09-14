@@ -27,7 +27,7 @@ function sendMessage() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            document.getElementById('server-rsp').value = JSON.stringify(data, null, 2);
+            document.getElementById('server-rsp').value = uri + ":\n" + JSON.stringify(data, null, 2) + "\n\n" + document.getElementById('server-rsp').value;
         })
         .catch(error => alert('Unable to send message to ' + uri + '.\n' + error));
 }

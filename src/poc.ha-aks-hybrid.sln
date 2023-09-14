@@ -17,6 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.ha.aks-hybrid.tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.ha-aks-hybrid.message-processor", "poc.ha-aks-hybrid.message-processor\poc.ha-aks-hybrid.message-processor.csproj", "{EF16F8F2-9F42-447B-AD25-83A821392B89}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "website", "website", "{6EEE9883-1A02-46AD-B117-188FA6916FFF}"
+	ProjectSection(SolutionItems) = preProject
+		www\index.html = www\index.html
+		www\css\site.css = www\css\site.css
+		www\js\site.js = www\js\site.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

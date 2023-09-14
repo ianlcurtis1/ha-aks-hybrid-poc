@@ -22,6 +22,7 @@
     /// </summary>
     public class APIMessageOut
     {
+        public DateTime serverTimestamp { get;}
         public string SenderId { get; set; } = string.Empty;
         public string CorrelationId { get; set; } = string.Empty;
         public string Value { get; set; } = string.Empty;
@@ -31,6 +32,7 @@
 
         public APIMessageOut(string senderId, string correlationId, string value, bool success)
         {
+            serverTimestamp = DateTime.UtcNow;
             SenderId = senderId;
             CorrelationId = correlationId;
             Value = value;
