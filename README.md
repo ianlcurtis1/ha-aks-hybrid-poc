@@ -55,13 +55,13 @@ curl -X 'POST' \
 
 3. The API will enqueue the message to a file share and return a success message.
 
-`{
+```json {
   "serverTimestamp": "2023-09-14T06:06:29.1009121Z",
   "senderId": "01",
   "correlationId": "967e9872-31f7-4613-a2b0-bf3383d7254d",
   "value": "Hello world!",
   "success": true
-}`
+}```
 
 4. If you have configured the message processor console app correctly, it will pick up the message from the file share and send it to the event hub. You can monitor your event hub messages by:
    - Install extension for VSCode https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer		
