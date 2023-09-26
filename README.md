@@ -3,7 +3,7 @@
 [![Build on pull to main](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/actions/workflows/build.yml/badge.svg)](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/actions/workflows/build.yml)
 
 # Introduction 
-AKS Hybrid (https://learn.microsoft.com/en-us/azure/aks/hybrid/) is an on-premise implementation of Azure Kubernetes Service (AKS) orchestrator which automates running containerised applications at scale. It provides a solution for hosting highly available workloads on-premise. Azure Arc (https://learn.microsoft.com/en-us/azure/azure-arc/overview) is a cloud based control plane which can be used for managing on-premise AKS Hybrid instances.
+AKS Hybrid (https://learn.microsoft.com/en-us/azure/aks/hybrid/) is an on-premise implementation of Azure Kubernetes Service (AKS) orchestrator which automates running containerised applications at scale. It provides a solution for hosting highly available workloads on-premise. Azure Arc (https://learn.microsoft.com/en-us/azure/azure-arc/overview) is a cloud based control plane which can be used for managing on-premise AKS Hybrid instances. Flux (https://fluxcd.io/) is an open sourced set of continuous delivery solutions for Kubernetes. AKS and AKS Hybrid natively support Flux through their GitOps capabilities. 
 
 
 This is a simple dotnet solution to demonstrate a highly available Azure Arc-enabled AKS Hybrid configuration for messaging. 
@@ -71,6 +71,6 @@ curl -X 'POST' \
    - Open the command palette, search for `Event` and select `Event hub: Start Monitoring Event Hub Message`								
    - When finished, select `Event hub: Stop Monitoring Event Hub Message`
 
-
+5. You can test the circuit-breaker functionality by disabling/re-enabling the event hub in Azure. The message processor console app will buffer the messages locally and retry sending them to the event hub after a period of backing off.
 
 THIS IS NOT COMPLETE, THERE MAY BE ERRORS AND OMMISSIONS, IT IS A WORK IN PROGRESS. COMPLETE INSTRUCTIONS COMING SOON
