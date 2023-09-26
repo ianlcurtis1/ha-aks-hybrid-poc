@@ -12,6 +12,8 @@ It consists of 2 parts that will be hosted on AKS Hybrid (on premises) and/or AK
 2. A dotnet core console application that dequeues the messages from the file share and sends them to an event hub in Azure.												
 The solution uses a circuit-breaker pattern to buffer messages locally and retry sending should the connection to the cloud be unavailable. The code is non-production, and uses hard coded settings for simplicity. In a production scenario, these would be stored in a secure location such as [Arc-enabled] Azure Key Vault.
 
+![Imgur](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/blob/main/PoCHLArchitecture.png)
+
 There are some simple GitHub workflows that:		
 1. Build and test the solution when a PR is raised.			
 2. Build Docker images and push them to Azure Container Registry when a new release is created.
