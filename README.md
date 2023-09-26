@@ -12,21 +12,21 @@ It consists of 2 parts that will be hosted on AKS Hybrid (on premises) and/or AK
 2. A dotnet core console application that dequeues the messages from the file share and sends them to an event hub in Azure.												
 The solution uses a circuit-breaker pattern to buffer messages locally and retry sending should the connection to the cloud be unavailable. The code is non-production, and uses hard coded settings for simplicity. In a production scenario, these would be stored in a secure location such as [Arc-enabled] Azure Key Vault.
 
-![Imgur](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/blob/main/PoCHLArchitecture.png)
-
 There are some simple GitHub workflows that:		
 1. Build and test the solution when a PR is raised.			
 2. Build Docker images and push them to Azure Container Registry when a new release is created.
+
+![Imgur](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/blob/main/PoCHLArchitecture.png)
 
 # Getting Started
 1. Create a GitHub account.
 2. Create an Azure subscription. Then create a new Azure Container Registry (ACR) for storing your images.
 3. Fork the code to your own GitHub repo.
 
-# Prerequisites
-1. An AKS Hybrid or AKS cluster. Details of the process to build this coming soon.
+# Deploy AKS Hybrid
+1. Deploy an AKS Hybrid cluster - details of the process coming soon.
 
-# Build and Test
+# Build, Test, and push images to ACR
 1. Create an Azure service Principal with secrets: https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Cwindows. This returns a json credentials object which is used as the GitHub secret.
 2. Configure a secret called AZURE_CREDENTIALS to contain the json created above in the GitHub repo as described here in create GitHub secrets https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-cli%2Clinux#create-github-secrets.  
 3. Create a branch for your changes.
@@ -34,7 +34,9 @@ There are some simple GitHub workflows that:
 5. Push changes to your branch and raise a PR. This will trigger the build and test workflow.
 6. Once the PR is approved, merge it to main. 
 7. Create a new release. This will trigger the build and push to ACR workflow.
-8. Once the images are in ACR, you can deploy them to your AKS Hybrid or AKS cluster. Details of the process to do this coming soon.
+
+# Deploy Images to AKS Hybrid
+1. Once the images are in ACR, you can deploy them to your AKS Hybrid or AKS cluster. Details of the process to do this coming soon.
 
 # Run
 1. Use curl or Postman to send a 'Hello world!' message to the API.
