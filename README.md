@@ -35,10 +35,10 @@ There are some simple GitHub workflows that:
 7. Create a new release. This will trigger the build and push to ACR workflow.
 
 # Deploy AKS Hybrid
-1. Deploy an AKS Hybrid cluster - details of the process coming soon.
+1. Deploy an AKS Hybrid cluster - details of the process can be found here https://github.com/philljudge/aks-hybrid-api-poc.
 
 # Deploy Images to AKS Hybrid
-1. Now deploy the images pushed to ACR to your AKS Hybrid or AKS cluster. Details of the process to do this coming soon.
+1. Now deploy the images pushed to ACR to your AKS Hybrid or AKS cluster. Details of the process can be found here https://github.com/philljudge/aks-hybrid-api-poc.
 
 # Run
 1. Use curl or Postman to send a 'Hello world!' message to the API.
