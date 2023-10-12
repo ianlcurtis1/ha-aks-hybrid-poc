@@ -20,11 +20,10 @@ There are some simple GitHub workflows that:
 
 # Getting Started
 1. Create a GitHub account.
-2. Create an Azure subscription. Then create a new Azure Container Registry (ACR) for storing your images.
-3. Fork the code to your own GitHub repo.
-
-# Deploy AKS Hybrid
-1. Deploy an AKS Hybrid cluster - details of the process coming soon.
+2. Create an Azure subscription.
+3. Create a new Azure Container Registry (ACR) for storing your images: https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?tabs=azure-cli.
+4. Create a new Azure Event Hub to receive messages from your AKS clusters: https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-create
+5. Fork the code to your own GitHub repo.
 
 # Build, Test, and push images to ACR
 1. Create an Azure service Principal with secrets: https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Cwindows. This returns a json credentials object which is used as the GitHub secret.
@@ -35,8 +34,11 @@ There are some simple GitHub workflows that:
 6. Once the PR is approved, merge it to main. 
 7. Create a new release. This will trigger the build and push to ACR workflow.
 
+# Deploy AKS Hybrid
+1. Deploy an AKS Hybrid cluster - details of the process coming soon.
+
 # Deploy Images to AKS Hybrid
-1. Once the images are in ACR, you can deploy them to your AKS Hybrid or AKS cluster. Details of the process to do this coming soon.
+1. Now deploy the images pushed to ACR to your AKS Hybrid or AKS cluster. Details of the process to do this coming soon.
 
 # Run
 1. Use curl or Postman to send a 'Hello world!' message to the API.
@@ -71,7 +73,7 @@ curl -X 'POST' \
 
 4. If you have configured the message processor console app correctly, it will pick up the message from the file share and send it to the event hub. You can monitor your event hub messages by:
    - Install extension for VSCode https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer		
-   - Edit the extension settings – add Event Hub Connection String and Hub Entity Name
+   - Edit the extension settings â€“ add Event Hub Connection String and Hub Entity Name
    - Open the command palette, search for `Event` and select `Event hub: Start Monitoring Event Hub Message`								
    - When finished, select `Event hub: Stop Monitoring Event Hub Message`
 
