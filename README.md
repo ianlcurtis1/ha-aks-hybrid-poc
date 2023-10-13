@@ -6,11 +6,11 @@
 AKS Hybrid (https://learn.microsoft.com/en-us/azure/aks/hybrid/) is an on-premise implementation of Azure Kubernetes Service (AKS) orchestrator which automates running containerised applications at scale. It provides a solution for hosting highly available workloads on-premise. Azure Arc (https://learn.microsoft.com/en-us/azure/azure-arc/overview) is a cloud based control plane which can be used for managing on-premise AKS Hybrid instances. Flux (https://fluxcd.io/) is an open sourced set of continuous delivery solutions for Kubernetes. AKS and AKS Hybrid natively support Flux through their GitOps capabilities. 
 
 
-This is a simple dotnet solution to demonstrate a highly available Azure Arc-enabled AKS Hybrid configuration for messaging. 
-It consists of 2 parts that will be hosted on AKS Hybrid (on premises) and/or AKS (cloud) -
-1. An asp dotnet core REST API that receives HTTP messages from a [local] client app (not included) and persists them to a file share that represents a simple queuing mechanism.
+This is a simple dotnet solution to demonstrate a highly available AKS configuration for messaging. The solution uses 2 instances of an architectural stamp - one hosted 'on premises' on Arc-enabled AKS Hybrid, the other hosted in the cloud on AKS. Between them, they provide high availability with the option (for on-premises installations) of a failover to cloud.
+The deployed messaging code consists of 2 parts that will be hosted in both instances -
+1. An asp dotnet core REST API that receives HTTP messages from a client app (not included) and persists them to a file share that represents a simple queuing mechanism.
 2. A dotnet core console application that dequeues the messages from the file share and sends them to an event hub in Azure.												
-The solution uses a circuit-breaker pattern to buffer messages locally and retry sending should the connection to the cloud be unavailable. The code is non-production, and uses hard coded settings for simplicity. In a production scenario, these would be stored in a secure location such as [Arc-enabled] Azure Key Vault.
+The solution uses a circuit-breaker pattern to buffer messages and retry sending should the connection to the Event Hub be unavailable. The code is non-production, and uses hard coded settings for simplicity. In a production scenario, these would be stored in a secure location such as [Arc-enabled] Azure Key Vault. The solution demonstrates how a single cloud-hosted control plane can be used to manage the deployments, whether on-premises, or in the cloud.
 
 There are some simple GitHub workflows that:		
 1. Build and test the solution when a PR is raised.			
