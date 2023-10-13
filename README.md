@@ -26,7 +26,7 @@ There are some simple GitHub workflows that:
 2. Create an Azure subscription.
 3. Create a new Azure Container Registry (ACR) for storing your images: https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal?tabs=azure-cli.
 4. Create a new Azure Event Hub to receive messages from your AKS clusters: https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-create
-5. Fork the code to your own GitHub repo.
+5. Clone or fork this repo to your own GitHub repo.
 
 # Build, Test, and push images to ACR
 1. Create an Azure service Principal with secrets: https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Cwindows. This returns a json credentials object which is used as the GitHub secret.
