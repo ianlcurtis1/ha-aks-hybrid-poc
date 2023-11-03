@@ -19,7 +19,7 @@ There are some simple GitHub workflows that:
 1. Build and test the solution when a PR is raised.			
 2. Build Docker images and push them to Azure Container Registry when a new release is created.
 
-![Imgur](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/blob/main/PoCHLArchitecture.png)
+![Imgur](https://github.com/ianlcurtis1/ha-aks-hybrid-poc/blob/main/PoCHLArchitecture-v2.png)
 
 # Getting Started
 1. Create a GitHub account.
